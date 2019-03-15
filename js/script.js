@@ -15,7 +15,7 @@ RiTA
 http://rednoise.org/rita/index.html
 
 */
-
+// vowels added capitals
 let vowels = "aeiouAEIOU";
 
 $(document).ready(function() {
@@ -48,8 +48,9 @@ function gotData(data) {
     // If so, assume it's plural (this is a flawed assumption)
     verb = 'are';
   }
-
+  //for greek gods
   let myth = getRandomElement(data.greek_gods);
+  //for books
   let read = getRandomElement(data.books);
   // Now the cat
   let cat = getRandomElement(data.cats);
@@ -81,7 +82,7 @@ function gotData(data) {
 function getRandomElement(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
-
+//page refresh
 function refresh() {
   location.reload();
 }
