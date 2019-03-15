@@ -27,6 +27,7 @@ $(document).ready(function() {
   // the location of the file, and a function to call when the data
   // is available...
   $.getJSON('data/data.json', gotData);
+  $.getJSON('data/books.json', gotData);
 });
 
 // gotData (data)
