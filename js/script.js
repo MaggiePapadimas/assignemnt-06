@@ -16,7 +16,7 @@ http://rednoise.org/rita/index.html
 
 */
 
-let vowels = "aeiou";
+let vowels = "aeiouAEIOU";
 
 $(document).ready(function() {
 
@@ -27,7 +27,6 @@ $(document).ready(function() {
   // the location of the file, and a function to call when the data
   // is available...
   $.getJSON('data/data.json', gotData);
-  $.getJSON('data/books.json', gotData);
 });
 
 // gotData (data)
@@ -50,19 +49,30 @@ function gotData(data) {
     verb = 'are';
   }
 
+  let myth = getRandomElement(data.greek_gods);
+  let read = getRandomElement(data.books);
   // Now the cat
   let cat = getRandomElement(data.cats);
+  let verb2 = 'a'
+  if(vowels.includes(cat.charAt(0))){
+    verb2 = 'an';
+  }
 
   // Same again for room
   let room = getRandomElement(data.rooms);
+  let verb3 = 'a';
+  if(vowels.includes(room.charAt(0))){
+    verb3 = 'an';
+  }
+
 
   // Now we can construct our description with a template string
   // We have the basic structure of a sentence and we substitute in the
   // values we've just calculated
-  let description = `${condiment} ${verb} like a ${cat} in a ${room}.`;
+  let descriptions = `${condiment} ${verb} like ${verb2} ${cat} in ${verb3} ${room} with the greek God(dess) ${myth} reading ${read}.`;
 
   // Finally, we add it to the page and hey presto!
-  $('body').append(description)
+  $('body').append(descriptions);
 }
 
 // getRandomElement ()
@@ -70,4 +80,8 @@ function gotData(data) {
 // Returns a random element from the array provided
 function getRandomElement(array) {
   return array[Math.floor(Math.random() * array.length)];
+}
+
+function refresh() {
+  location.reload();
 }

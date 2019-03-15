@@ -13,3 +13,9 @@ body {
   font-size: 4em;
   font-weight: bold;
 }
+
+button {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
